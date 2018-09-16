@@ -22,7 +22,12 @@ img2_fg = cv2.bitwise_and(img2, img2, mask=mask)
 
 dist = cv2.add(img1_bg, img2_fg)
 img1[0:rows, 0:cols] = dist
+cv2.imshow('roi', roi)
+cv2.imshow('dist', dist)
+cv2.imshow('mask_inv', mask_inv)
+cv2.imshow('img1_bg', img1_bg)
+cv2.imshow('img2_fg', img2_fg)
 cv2.imshow('res', img1)
 
-cv2.waitKey(10*1000)
+cv2.waitKey(30*1000)
 cv2.destroyAllWindows()
