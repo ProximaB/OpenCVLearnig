@@ -8,6 +8,7 @@ img1_inSizeImg2 = img1[0:172, 0:293]
 #add = cv2.add(img1_inSizeImg2*2, img2*2) #add = cv2.add(img1_inSizeImg2*2, img2*2)
 #weighted = cv2.addWeighted(img1_inSizeImg2, 0.6, img2, 0.4, 0)
 #cv2.imshow('weighted', weighted)
+#cv2.imshow('add', add)
 
 rows, cols, channels = img2.shape
 roi = img1[0:rows, 0:cols]
