@@ -7,10 +7,21 @@ while True:
 	_, frame = cap.read()
 	hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
 	
-	lower_green = np.array([0,0,0])
-	upper_green = np.array([255, 255, 255])
+	# hsv hue sat value
+	lower_green = np.array([70,0,0])
+	upper_green = np.array([180, 255, 255])
+	
+	mask = cv2.inRange(hsv, lower_green, upper_green)
+	res = cv2.bitwise_and(frame, frame, mask = mask)
+	
+	cv2.imshow('frame', frame)
+	cv2.imshow('mask', mask)
+	cv2.imshow('result', res)
+	
+	k = cv2.waitKey(5) & 0xFF
+	if k == 27:
+		break;
 
-cap.release()
-cv2.waitKey(5*1000)
-print('waitKey')
 cv2.destroyAllWindows()
+cap.release()
+print('waitKey')
