@@ -13,15 +13,24 @@ while True:
 	
 	mask = cv2.inRange(hsv, lower_green, upper_green)
 	res = cv2.bitwise_and(frame, frame, mask = mask)
+	
 	cv2.circle(res, (100,63), 55, (30,180,30), -1)
 	cv2.circle(res, (155,63), 55, (110,237,0), -1)
 	cv2.circle(res, (210,63), 55, (195,250,188), -1)
+	
 	cv2.namedWindow('frame', cv2.WINDOW_GUI_EXPANDED)
-	cv2.namedWindow('mask', cv2.WINDOW_GUI_EXPANDED)
+	#cv2.namedWindow('mask', cv2.WINDOW_GUI_EXPANDED)
 	cv2.namedWindow('result', cv2.WINDOW_GUI_EXPANDED)
+	
+	kernel = np.ones((15,15), np.float32)/255
+	#print('kernel: ')
+	#print(kernel)
+	smoothed = cv2.filter2D(res, -1, kernel)
+	
 	cv2.imshow('frame', frame)
-	cv2.imshow('mask', mask)
+	#cv2.imshow('mask', mask)
 	cv2.imshow('result', res)
+	cv2.imshow('smoothed', smoothed)
 	
 	k = cv2.waitKey(5) & 0xFF
 	if k == 27:
