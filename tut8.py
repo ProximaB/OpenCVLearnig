@@ -18,19 +18,31 @@ while True:
 	cv2.circle(res, (155,63), 55, (110,237,0), -1)
 	cv2.circle(res, (210,63), 55, (195,250,188), -1)
 	
-	cv2.namedWindow('frame', cv2.WINDOW_GUI_EXPANDED)
+	#cv2.namedWindow('frame', cv2.WINDOW_GUI_EXPANDED)
 	#cv2.namedWindow('mask', cv2.WINDOW_GUI_EXPANDED)
-	cv2.namedWindow('result', cv2.WINDOW_GUI_EXPANDED)
+	#cv2.namedWindow('result', cv2.WINDOW_GUI_EXPANDED)
+	#cv2.namedWindow('smoothed', cv2.WINDOW_GUI_EXPANDED)
+	#cv2.namedWindow('GaussianBlur', cv2.WINDOW_GUI_EXPANDED)
+	#cv2.namedWindow('median', cv2.WINDOW_GUI_EXPANDED)
+	cv2.namedWindow('bilaterail', cv2.WINDOW_GUI_EXPANDED)
 	
-	kernel = np.ones((15,15), np.float32)/255
-	#print('kernel: ')
-	#print(kernel)
-	smoothed = cv2.filter2D(res, -1, kernel)
+	#kernel = np.ones((15,15), np.float32)/255
+
+	#smoothed = cv2.filter2D(res, -1, kernel)
 	
-	cv2.imshow('frame', frame)
+	#blur = cv2.GaussianBlur(res,(15,15), 0)
+	
+	#median = cv2.medianBlur(res, 15)
+	
+	bilaterail = cv2.bilateralFilter(res, 15, 75, 75)
+	
+	#cv2.imshow('frame', frame)
 	#cv2.imshow('mask', mask)
-	cv2.imshow('result', res)
-	cv2.imshow('smoothed', smoothed)
+	#cv2.imshow('result', res)
+	#cv2.imshow('smoothed', smoothed)
+	#cv2.imshow('GaussianBlur', blur)
+	#cv2.imshow('median', median)
+	cv2.imshow('bilaterail', bilaterail)
 	
 	k = cv2.waitKey(5) & 0xFF
 	if k == 27:
