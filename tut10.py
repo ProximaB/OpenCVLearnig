@@ -6,6 +6,7 @@ cv2.namedWindow('origianal', cv2.WINDOW_NORMAL | cv2.WINDOW_KEEPRATIO | cv2.WIND
 cv2.namedWindow('laplacian', cv2.WINDOW_NORMAL | cv2.WINDOW_KEEPRATIO | cv2.WINDOW_GUI_EXPANDED)
 cv2.namedWindow('sobelx', cv2.WINDOW_NORMAL | cv2.WINDOW_KEEPRATIO | cv2.WINDOW_GUI_EXPANDED)
 cv2.namedWindow('sobely', cv2.WINDOW_NORMAL | cv2.WINDOW_KEEPRATIO | cv2.WINDOW_GUI_EXPANDED)
+cv2.namedWindow('edges', cv2.WINDOW_NORMAL | cv2.WINDOW_KEEPRATIO | cv2.WINDOW_GUI_EXPANDED)
 
 while True:
 	_, frame = cap.read()
@@ -18,10 +19,13 @@ while True:
 	sobelx = cv2.Sobel(frame, cv2.CV_64F, 1, 0, ksize=5) #ksize kernel size
 	sobely = cv2.Sobel(frame, cv2.CV_64F, 0, 1, ksize=5)
 	
+	edges = cv2.Canny(frame, 100, 200)
+	
 	cv2.imshow('origianal', frame)
 	cv2.imshow('laplacian', laplacian)
 	cv2.imshow('sobelx', sobelx)	
-	cv2.imshow('sobely', sobely)
+	cv2.imshow('sobely', sobely)	
+	cv2.imshow('edges', edges)
 	
 	
 	k = cv2.waitKey(5) & 0xFF
