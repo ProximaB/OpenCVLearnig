@@ -14,7 +14,9 @@ template = cv2.imread('meridaXchar.jpg', 0)
 template.astype(np.float32)
 print('template size: ' +  str(template.shape))
 
-w, h = template.shape
+w, h = template.shape[::-1]
+print('template.shape[::-1]: ' + str(template.shape[::-1]))
+print('template.shape: ' + str(template.shape))
  
 res = cv2.matchTemplate(img_gray, template, cv2.TM_CCOEFF_NORMED)
 threshold = 0.72
@@ -26,4 +28,4 @@ for pt in zip(*loc[::-1]):
 cv2.imshow('deteted', img_bgr)
 
 cv2.waitKey(0)
-cv2.destroyAllWindwos()
+cv2.destroyAllWindows()
