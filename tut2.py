@@ -12,6 +12,7 @@ while True:
 	gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 	out.write(frame)
 	cv2.imshow('Podglad obrazu', frame)
+	
 	cv2.imshow('Podglad obrazu szary' , gray)
 	
 	if cv2.waitKey(1) & 0xFF == ord('q'):

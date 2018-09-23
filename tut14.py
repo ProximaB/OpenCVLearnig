@@ -23,7 +23,7 @@ plt.imshow(img2)
 plt.show()
 while True:
 	k = cv2.waitKey(5) & 0xFF
-	if k == 27:
+	if k == 27:qq
 		cv2.destroyAllWindows()
 		sys.exit(0)
 		break;
